@@ -11,5 +11,17 @@ void main() {
     expect(find.text('FixIt Campus'), findsOneWidget);
     expect(find.text('See something broken?'), findsOneWidget);
     expect(find.text('My recent reports'), findsOneWidget);
+
+    await tester.tap(find.text('Report a Concern'));
+    await tester.pumpAndSettle();
+
+    expect(find.text("What's the issue?"), findsOneWidget);
+    expect(find.text('Categories'), findsOneWidget);
+
+    await tester.tap(find.text('Broken lights'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Report Details'), findsOneWidget);
+    expect(find.text('Flickering ceiling light'), findsOneWidget);
   });
 }
